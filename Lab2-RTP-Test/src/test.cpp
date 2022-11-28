@@ -222,12 +222,44 @@ TEST(RTP, NO_FAILURE_OPT)
     EXPECT_EQ(easy_opt_test(message, recvfile, ws), 1);
 }
 
+
+TEST(RTP, NO_FAILURE_DDL)
+{
+    char* message = (char*)"testdata";
+    char* recvfile = (char*)"recvfile";
+    char* ws = (char*)"512";
+    EXPECT_EQ(easy_test(message, recvfile, ws), 1);
+}
+
+TEST(RTP, NO_FAILURE_OPT_DDL)
+{
+    char* message = (char*)"testdata";
+    char* recvfile = (char*)"recvfile";
+    char* ws = (char*)"512";
+    EXPECT_EQ(easy_opt_test(message, recvfile, ws), 1);
+}
+
+
+
+
+
+
 TEST(RTP, RECEIVER_TEST_LOST_DATA)
 {
     char* message = (char*)"testdata";
     char* recvfile = (char*)"recvfile";
     char* ws = (char*)"256";
     char* pb = (char*)"10";
+    char* er = (char*)"1";
+    EXPECT_EQ(receiver_test(message, recvfile, ws, pb, er), 1);
+}
+
+TEST(RTP, RECEIVER_TEST_LOST_DATA_DDL)
+{
+    char* message = (char*)"testdata";
+    char* recvfile = (char*)"recvfile";
+    char* ws = (char*)"512";
+    char* pb = (char*)"5";
     char* er = (char*)"1";
     EXPECT_EQ(receiver_test(message, recvfile, ws, pb, er), 1);
 }
@@ -262,6 +294,16 @@ TEST(RTP, RECEIVER_TEST_REORDER_DATA)
     EXPECT_EQ(receiver_test(message, recvfile, ws, pb, er), 1);
 }
 
+TEST(RTP, RECEIVER_TEST_REORDER_DATA_DDL)
+{
+    char* message = (char*)"testdata";
+    char* recvfile = (char*)"recvfile";
+    char* ws = (char*)"512";
+    char* pb = (char*)"5";
+    char* er = (char*)"4";
+    EXPECT_EQ(receiver_test(message, recvfile, ws, pb, er), 1);
+}
+
 TEST(RTP, RECEIVER_TEST_MIXED_1)
 {
     char* message = (char*)"testdata";
@@ -288,6 +330,16 @@ TEST(RTP, SENDER_TEST_LOST_ACK)
     char* recvfile = (char*)"recvfile";
     char* ws = (char*)"256";
     char* pb = (char*)"10";
+    char* er = (char*)"1";
+    EXPECT_EQ(sender_test(message, recvfile, ws, pb, er), 1);
+}
+
+TEST(RTP, SENDER_TEST_LOST_ACK_DDL)
+{
+    char* message = (char*)"testdata";
+    char* recvfile = (char*)"recvfile";
+    char* ws = (char*)"512";
+    char* pb = (char*)"5";
     char* er = (char*)"1";
     EXPECT_EQ(sender_test(message, recvfile, ws, pb, er), 1);
 }
@@ -322,6 +374,16 @@ TEST(RTP, SENDER_TEST_REORDER_ACK)
     EXPECT_EQ(sender_test(message, recvfile, ws, pb, er), 1);
 }
 
+TEST(RTP, SENDER_TEST_REORDER_ACK_DDL)
+{
+    char* message = (char*)"testdata";
+    char* recvfile = (char*)"recvfile";
+    char* ws = (char*)"512";
+    char* pb = (char*)"5";
+    char* er = (char*)"4";
+    EXPECT_EQ(sender_test(message, recvfile, ws, pb, er), 1);
+}
+
 TEST(RTP, SENDER_TEST_MIXED_1)
 {
     char* message = (char*)"testdata";
@@ -348,6 +410,16 @@ TEST(RTP, OPT_RECEIVER_TEST_LOST_DATA)
     char* recvfile = (char*)"recvfile";
     char* ws = (char*)"256";
     char* pb = (char*)"10";
+    char* er = (char*)"1";
+    EXPECT_EQ(opt_receiver_test(message, recvfile, ws, pb, er), 1);
+}
+
+TEST(RTP, OPT_RECEIVER_TEST_LOST_DATA_DDL)
+{
+    char* message = (char*)"testdata";
+    char* recvfile = (char*)"recvfile";
+    char* ws = (char*)"512";
+    char* pb = (char*)"5";
     char* er = (char*)"1";
     EXPECT_EQ(opt_receiver_test(message, recvfile, ws, pb, er), 1);
 }
@@ -382,6 +454,16 @@ TEST(RTP, OPT_RECEIVER_TEST_REORDER_DATA)
     EXPECT_EQ(opt_receiver_test(message, recvfile, ws, pb, er), 1);
 }
 
+TEST(RTP, OPT_RECEIVER_TEST_REORDER_DATA_DDL)
+{
+    char* message = (char*)"testdata";
+    char* recvfile = (char*)"recvfile";
+    char* ws = (char*)"512";
+    char* pb = (char*)"5";
+    char* er = (char*)"4";
+    EXPECT_EQ(opt_receiver_test(message, recvfile, ws, pb, er), 1);
+}
+
 TEST(RTP, OPT_RECEIVER_TEST_MIXED_1)
 {
     char* message = (char*)"testdata";
@@ -412,6 +494,16 @@ TEST(RTP, OPT_SENDER_TEST_LOST_ACK)
     EXPECT_EQ(opt_sender_test(message, recvfile, ws, pb, er), 1);
 }
 
+TEST(RTP, OPT_SENDER_TEST_LOST_ACK_DDL)
+{
+    char* message = (char*)"testdata";
+    char* recvfile = (char*)"recvfile";
+    char* ws = (char*)"512";
+    char* pb = (char*)"5";
+    char* er = (char*)"1";
+    EXPECT_EQ(opt_sender_test(message, recvfile, ws, pb, er), 1);
+}
+
 TEST(RTP, OPT_SENDER_TEST_DUP_ACK)
 {
     char* message = (char*)"testdata";
@@ -438,6 +530,17 @@ TEST(RTP, OPT_SENDER_TEST_REORDER_ACK)
     char* recvfile = (char*)"recvfile";
     char* ws = (char*)"256";
     char* pb = (char*)"10";
+    char* er = (char*)"4";
+    EXPECT_EQ(opt_sender_test(message, recvfile, ws, pb, er), 1);
+}
+
+
+TEST(RTP, OPT_SENDER_TEST_REORDER_DDL)
+{
+    char* message = (char*)"testdata";
+    char* recvfile = (char*)"recvfile";
+    char* ws = (char*)"512";
+    char* pb = (char*)"5";
     char* er = (char*)"4";
     EXPECT_EQ(opt_sender_test(message, recvfile, ws, pb, er), 1);
 }
