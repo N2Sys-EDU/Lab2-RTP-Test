@@ -10,4 +10,4 @@ if [ ! -f ".built" ]; then
         cd ..
 fi
 
-./build/rtp_test_all --gtest_filter="RTP.$1"
+./build/rtp_test_all --gtest_filter="*.$1"
