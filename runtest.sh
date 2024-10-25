@@ -10,4 +10,6 @@ if [ ! -f ".built" ]; then
         cd ..
 fi
 
+cd build
+ls build
 ./build/rtp_test_all --gtest_filter="*.$1"
